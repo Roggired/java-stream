@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group 'ru.itmo'
+version '0.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":common")
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
+    implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "ru.itmo.client.App"
+    }
+
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    exclude {
+        "META-INF/DEPENDENCIES"
+    }
+}
