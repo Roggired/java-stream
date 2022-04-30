@@ -2,14 +2,20 @@ package ru.itmo.client;
 
 
 import ru.itmo.common.Response;
+import ru.itmo.common.model.Cat;
 import ru.itmo.common.model.Student;
 
 public class App {
     public static void main(String[] args) {
         Student student = new Student(
-                1,
-                "Test",
-                20
+                0,
+                "abc', 0, 3); DROP TABLE users; INSERT INTO student(name, age, cat_id) VALUES('",
+                20,
+                new Cat(
+                        0,
+                        "Кот Василий",
+                        3
+                )
         );
 
         ServerAPI serverAPI = new ServerAPIImpl();

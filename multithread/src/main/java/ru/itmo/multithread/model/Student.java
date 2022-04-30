@@ -1,26 +1,16 @@
-package ru.itmo.common.model;
+package ru.itmo.multithread.model;
 
-public class Student {
+import java.util.Objects;
+
+public final class Student {
     private int id;
     private String name;
     private int age;
-    private Cat cat;
 
-
-    public Student(int id, String name, int age, Cat cat) {
+    public Student(int id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
-        this.cat = cat;
-    }
-
-
-    public Cat getCat() {
-        return cat;
-    }
-
-    public void setCat(Cat cat) {
-        this.cat = cat;
     }
 
     public int getId() {
@@ -48,11 +38,15 @@ public class Student {
     }
 
     @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return id == student.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
